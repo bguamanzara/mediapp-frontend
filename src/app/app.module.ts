@@ -32,6 +32,8 @@ import { TokenComponent } from './login/recuperar/token/token.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SignoVitalComponent } from './pages/signo-vital/signo-vital.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { SignoVitalEdicionComponent } from './pages/signo-vital/signo-vital-edicion/signo-vital-edicion.component';
+import { DialogoSignoComponent } from './pages/signo-vital/signo-vital-edicion/dialogo-signo/dialogo-signo.component';
 
 export function tokenGetter() {
   let tk = JSON.parse(sessionStorage.getItem(TOKEN_NAME));
@@ -61,9 +63,11 @@ export function tokenGetter() {
     RecuperarComponent,
     TokenComponent,
     SignoVitalComponent,
-    PerfilComponent
+    PerfilComponent,
+    SignoVitalEdicionComponent,
+    DialogoSignoComponent
   ],
-  entryComponents: [DialogoComponent, DialogoDetalleComponent],
+  entryComponents: [DialogoComponent, DialogoDetalleComponent, DialogoSignoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

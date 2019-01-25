@@ -1,0 +1,38 @@
+<form class="example-container" [formGroup]="form" (ngSubmit)="aceptar()" #signoVitalForm="ngForm">
+  <div class="example-container">
+    <mat-form-field>
+      <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [formControl]="myControlPaciente"
+        formControlName="paciente">
+      <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="displayFn" (optionSelected)="seleccionarPaciente($event)">
+        <mat-option *ngFor="let p of filteredOptions | async" [value]="p">
+          {{ p.nombres }} {{p.apellidos}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="openDialog()" >Agregar Paciente</button>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha" formControlName="fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Temperatura" [(ngModel)]="temperatura" formControlName="temperatura">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Pulso" [(ngModel)]="pulso" formControlName="pulso"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Ritmo Cardiaco" [(ngModel)]="ritmoCardiaco" formControlName="ritmoCardiaco"></textarea>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" type="submit" >
+    <mat-icon>done</mat-icon>
+    <span>Aceptar</span>
+  </button>
+  <button mat-raised-button color="accent" routerLink='/signo-vital' type="button">
+    <mat-icon>close</mat-icon>
+    <span>Cancelar</span>
+  </button>
+</form>

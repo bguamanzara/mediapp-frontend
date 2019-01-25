@@ -18,6 +18,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignoVitalComponent } from './pages/signo-vital/signo-vital.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { SignoVitalEdicionComponent } from './pages/signo-vital/signo-vital-edicion/signo-vital-edicion.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,12 @@ const routes: Routes = [
   { path: 'consulta-especial', component: EspecialComponent, canActivate: [GuardService] },
   { path: 'buscar', component: BuscarComponent, canActivate: [GuardService] },
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
-  { path: 'signo-vital', component: SignoVitalComponent, canActivate: [GuardService] },
+  {
+    path: 'signo-vital', component: SignoVitalComponent, children: [
+      { path: 'nuevo', component: SignoVitalEdicionComponent },
+      { path: 'edicion/:id', component: SignoVitalEdicionComponent }      
+    ], canActivate: [GuardService]
+  },
   { path: 'perfil', component: PerfilComponent, canActivate: [GuardService] },
   { path: 'not-403', component: Not403Component },
   { path: 'login', component: LoginComponent },
